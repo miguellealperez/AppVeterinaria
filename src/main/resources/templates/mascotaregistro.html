@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+        <title>Ventana Registro Cliente / App Veterinaria</title>
+        <meta content="" name="description">
+        <meta content="" name="keywords">
+
+        <!-- Favicons -->
+        <link href="/403890.png" rel="icon">
+        <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.gstatic.com" rel="preconnect">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+        <!-- Vendor CSS Files -->
+        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/vendor/quill/quill.snow.css" rel="stylesheet">
+        <link href="/vendor/quill/quill.bubble.css" rel="stylesheet">
+        <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+        <link href="/vendor/simple-datatables/style.css" rel="stylesheet">
+
+        <!-- Template Main CSS File -->
+        <link href="/css/style.css" rel="stylesheet">
+
+        <!-- =======================================================
+        * Template Name: NiceAdmin - v2.4.1
+        * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+        * Author: BootstrapMade.com
+        * License: https://bootstrapmade.com/license/
+        ======================================================== -->
+    </head>
+
+    <body>
+
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
+
+            <div class="d-flex align-items-center justify-content-between">
+                <a href="ventanaprincipal" class="logo d-flex align-items-center">
+                    <img src="/403890.png" alt="">
+                    <span class="d-none d-lg-block">AppVeterinaria</span>
+                </a>
+                <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
+
+
+            <nav class="header-nav ms-auto">
+                <ul class="d-flex align-items-center">
+
+
+                    <li class="nav-item dropdown pe-3">
+
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" >
+                            <img src="/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                            <span class="d-none d-md-block ps-2" th:text="${' '+ Veterinario_nombre}" ></span>
+                        </a><!-- End Profile Iamge Icon -->
+
+                    </li><!-- End Profile Nav -->
+
+                </ul>
+            </nav><!-- End Icons Navigation -->
+
+        </header><!-- End Header -->
+
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link " href="ventanaprincipal">
+                        <i class="bi bi-grid"></i>
+                        <span>Ventana Principal</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-menu-button-wide"></i><span>Registrar</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="clienteregistro">
+                                <i class="bi bi-circle"></i><span>Cliente</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mascotaregistro">
+                                <i class="bi bi-circle"></i><span>Mascota</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li><!-- End Components Nav -->
+
+
+
+                <li class="nav-heading">Páginas</li>
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="users-profile.html">
+                        <i class="bi bi-person"></i>
+                        <span>Profile</span>
+                    </a>
+                </li><!-- End Profile Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-faq.html">
+                        <i class="bi bi-question-circle"></i>
+                        <span>F.A.Q</span>
+                    </a>
+                </li><!-- End F.A.Q Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-contact.html">
+                        <i class="bi bi-envelope"></i>
+                        <span>Contact</span>
+                    </a>
+                </li><!-- End Contact Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-register.html">
+                        <i class="bi bi-card-list"></i>
+                        <span>Register</span>
+                    </a>
+                </li><!-- End Register Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-login.html">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        <span>Login</span>
+                    </a>
+                </li><!-- End Login Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-error-404.html">
+                        <i class="bi bi-dash-circle"></i>
+                        <span>Error 404</span>
+                    </a>
+                </li><!-- End Error 404 Page Nav -->
+
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="pages-blank.html">
+                        <i class="bi bi-file-earmark"></i>
+                        <span>Blank</span>
+                    </a>
+                </li><!-- End Blank Page Nav -->
+
+            </ul>
+
+        </aside><!-- End Sidebar-->
+
+        <main id="main" class="main">
+
+            <div class="pagetitle">
+                <h1>Registro de Mascota</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="ventanaprincipal">Inicio</a></li>
+                        <li class="breadcrumb-item active">Ventana Principal</li>
+                        <li class="breadcrumb-item active">Registro de Mascota</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+
+            <section class="section">
+                <div class="row">
+                    <div class="d-flex align-items-center justify-content-center">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Datos de la Mascota</h5>
+                                
+                                <div th:if=${param.exito}>
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        Se ha registrado exitosamente.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                <div th:if=${param.error}>
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        Error en el registro, el Cliente ya existe.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                </div>
+                                
+                                <!-- General Form Elements -->
+                                <form th:action="@{/registrarmascota}" method="post" th:object="${mascota}"> 
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputID" class="col-sm-2 col-form-label">ID de la Mascota</label>
+                                        <div class="col-sm-10">
+                                            <input type="number" class="form-control"  required th:field="*{id}">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputNombre" class="col-sm-2 col-form-label">Nombre</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" required th:field="*{Mascota_nombre}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label class="col-sm-2 col-form-label">Tipo</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" aria-label="Default select example" required th:field="*{Mascota_tipo}">
+                                                <option selected disabled th:value="'Seleccione uno'">Seleccione uno</option>
+                                                <option th:value="'Bovino'">Bovino</option>
+                                                <option th:value="'Caprino'">Caprino</option>
+                                                <option th:value="'Porcino'">Porcino</option>
+                                                <option th:value="'Canino'">Canino</option>
+                                                <option th:value="'Felino'">Felino</option>
+                                                <option th:value="'Lanar'">Lanar</option>
+                                                <option th:value="'Equino'">Equino</option>
+                                                <option th:value="'Asnal'">Asnal</option>
+                                                <option th:value="'Batracios'">Batracios</option>
+                                                <option th:value="'Peces'">Peces</option>
+                                                <option th:value="'Aves'">Aves</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label class="col-sm-2 col-form-label">Genero</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" aria-label="Default select example" required th:field="*{Mascota_genero}">
+                                                <option selected disabled th:value="'Seleccione uno'">Seleccione uno</option>
+                                                <option th:value="'Hembra'">Hembra</option>
+                                                <option th:value="'Macho'">Macho</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Edad</label>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" required th:field="*{Mascota_edad}">
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <select class="form-select" aria-label="Default select example" required th:field="*{Mascota_edad_tipo}">
+                                                <option selected disabled th:value="'Seleccione uno'">Seleccione uno</option>
+                                                <option th:value="'Dias'">Dias</option>
+                                                <option th:value="'Meses'">Meses</option>
+                                                <option th:value="'Años'">Años</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputPeso" class="col-sm-2 col-form-label" >Peso</label>
+                                        <div class="col-sm-5">
+                                            <input type="number" class="form-control" required th:field="*{Mascota_peso}">
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <select class="form-select" aria-label="Default select example" required th:field="*{Mascota_peso_tipo}">
+                                                <option selected disabled th:value="'Seleccione uno'" >Seleccione uno</option>
+                                                <option th:value="'Gramos'">Gramos</option>
+                                                <option th:value="'Kilogramos'">Kilogramos</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Subir Foto</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="file" id="formFile">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label">Historia Clínica vet. anterior</label>
+                                        <div class="col-sm-10">
+                                            <textarea class="form-control" style="height: 100px" th:field="*{HistoriaClinica}"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <label for="inputIDD" class="col-sm-2 col-form-label">ID del Dueño</label>
+                                        <div class="col-sm-10">
+                                            <input type="number"  class="form-control" required th:field="*{Dueño_id}">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 g-3">
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <button type="submit" class="btn btn-primary">Registrar</button>
+                                        </div>
+                                    </div>
+
+                                </form><!-- End General Form Elements -->
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </main><!-- End #main -->
+        <!-- ======= Footer ======= -->
+        <footer id="footer" class="footer">
+
+        </footer><!-- End Footer -->
+
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+        <!-- Vendor JS Files -->
+        <script src="/vendor/apexcharts/apexcharts.min.js"></script>
+        <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/vendor/chart.js/chart.min.js"></script>
+        <script src="/vendor/echarts/echarts.min.js"></script>
+        <script src="/vendor/quill/quill.min.js"></script>
+        <script src="/vendor/simple-datatables/simple-datatables.js"></script>
+        <script src="/vendor/tinymce/tinymce.min.js"></script>
+        <script src="/vendor/php-email-form/validate.js"></script>
+
+        <!-- Template Main JS File -->
+        <script src="/js/main.js"></script>
+
+    </body>
+
+</html>
