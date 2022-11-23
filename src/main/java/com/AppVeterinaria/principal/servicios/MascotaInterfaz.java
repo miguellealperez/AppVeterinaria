@@ -5,6 +5,7 @@
 package com.AppVeterinaria.principal.servicios;
 
 import com.AppVeterinaria.principal.entidades.Mascota;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,4 +16,5 @@ import org.springframework.stereotype.Service;
 public interface MascotaInterfaz {
     public boolean crearMascota(Mascota mascota);
     public boolean consultarMascota(Mascota mascota);
+    public List<Mascota> listarMascota();
 }
