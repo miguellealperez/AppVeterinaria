@@ -16,4 +16,5 @@ import org.springframework.stereotype.Service;
 public interface ClienteInterfaz {
     public boolean crearCliente(DueñoMascota cliente);
     public boolean consultarCliente(DueñoMascota cliente);
+    public List<DueñoMascota> listarClientes();
 }

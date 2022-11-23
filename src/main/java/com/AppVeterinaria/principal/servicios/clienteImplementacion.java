@@ -47,4 +47,9 @@ public class clienteImplementacion implements ClienteInterfaz {
         }
         return false;
     }
+
+    @Override
+    public List<DueñoMascota> listarClientes() {
+        return clienteRepositorio.findAll();
+    }
 }

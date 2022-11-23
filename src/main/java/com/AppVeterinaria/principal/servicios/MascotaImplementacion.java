@@ -46,5 +46,10 @@ public class MascotaImplementacion implements MascotaInterfaz{
         }
         return false;
     }
+
+    @Override
+    public List<Mascota> listarMascota() {
+        return mascotaRepositorio.findAll();
+    }
     
 }
