@@ -7,6 +7,8 @@ package com.AppVeterinaria.principal.servicios;
 import com.AppVeterinaria.principal.entidades.Mascota;
 import com.AppVeterinaria.principal.repositorios.MascotaRepositorio;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,6 +52,27 @@ public class MascotaImplementacion implements MascotaInterfaz{
     @Override
     public List<Mascota> listarMascota() {
         return mascotaRepositorio.findAll();
+    }
+
+    @Override
+    public Optional<Mascota> buscarPorId(Integer id) {
+        return mascotaRepositorio.findById(id);
+    }
+
+    @Override
+    public boolean autenticar(Mascota mascota) {
+        List<Mascota> mascotaa = mascotaRepositorio.findAll();
+        for (Mascota mascota1 : mascotaa) {
+            if (Objects.equals(mascota.getId(), mascota1.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void eliminarMascota(Mascota mascot) {
+        mascotaRepositorio.delete(mascot);
     }
     
 }

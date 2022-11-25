@@ -4,8 +4,11 @@
  */
 package com.AppVeterinaria.principal.controladores;
 
+import com.AppVeterinaria.principal.entidades.Factura;
+import com.AppVeterinaria.principal.entidades.Mascota;
 import com.AppVeterinaria.principal.entidades.Veterinario;
 import com.AppVeterinaria.principal.servicios.ClienteInterfaz;
+import com.AppVeterinaria.principal.servicios.FacturaInterfaz;
 import com.AppVeterinaria.principal.servicios.MascotaInterfaz;
 import com.AppVeterinaria.principal.servicios.VeterinarioInter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,9 @@ public class VeterinariaControlador {
     
     @Autowired
     MascotaInterfaz mascotaService;
+    
+    @Autowired
+    FacturaInterfaz facturaService;
     
     @PostMapping("/autenticar")
     public String Autenticar(@ModelAttribute("veterinario") Veterinario veterinarioDTO) {
@@ -83,6 +89,7 @@ public class VeterinariaControlador {
         modelo.addAttribute("clientes", clienteservice.listarClientes());
         modelo.addAttribute("mascota",mascotaService.listarMascota());
         modelo.addAttribute("veterinario", new Veterinario());
+        modelo.addAttribute("masco", new Mascota());
         return "ventanaprincipal";
         
     }
@@ -98,10 +105,86 @@ public class VeterinariaControlador {
         return "autenticadoerror";
     }
     
-    @GetMapping("/generarcita")
-    public String getGenerarCita(Model modelo) {
+    @GetMapping("/generarcita/{id}")
+    public String getGenerarCita(@PathVariable String id ,Model modelo) {
         modelo.addAttribute("veterinario", new Veterinario());
+        Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        //mascotaService.eliminarMascota(masco);
+        //mascotaService.crearMascota(masco);
+        modelo.addAttribute("masco",masco);
         return "generarcita";
     }
+    
+    
+    @PostMapping("/generarcita")
+    public String GenerarCita(@ModelAttribute("masco")  Mascota mascotaDTO) {
+
+        //Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        if (!mascotaService.autenticar(mascotaDTO)) {
+            return "redirect:/mascotaregistro";
+        }
+        Integer id = mascotaDTO.getId();
+        Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        
+        
+        return "redirect:/generarcita/"+masco.getId();
+    }
+    
+    @PostMapping("/citagenerada")
+    public String GenerarCita2(@ModelAttribute("masco")  Mascota mascotaDTO) {
+
+        //Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        Integer id = mascotaDTO.getId();
+        Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        mascotaService.eliminarMascota(masco);
+        mascotaService.crearMascota(mascotaDTO);
+        
+        return "redirect:/ventanaprincipal";
+    }
+    
+    
+    @GetMapping("/genfactura")
+    public String getGenerarCita(Model modelo) {
+        modelo.addAttribute("veterinario", new Veterinario());
+        //mascotaService.eliminarMascota(masco);
+        //mascotaService.crearMascota(masco);
+        modelo.addAttribute("factu",new Factura());
+        return "genfactura";
+    }
+    
+    
+    @PostMapping("/genfactura")
+    public String Generarfactura(@ModelAttribute("factu")  Factura facturaDTO) {
+
+        //Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        Integer id = facturaDTO.getId();
+        Mascota masco = mascotaService.buscarPorId(Integer.valueOf(id)).get();
+        //mascotaService.eliminarMascota(masco);
+        //mascotaService.crearMascota(mascotaDTO);
+        facturaService.crearFactura(facturaDTO);
+
+        return "redirect:/ventanaprincipal";
+    }
+    
+    /*
+    @PostMapping("/autentica")
+    public String autenticar(@ModelAttribute("user") Usuario  usuarioDTO) {
+        
+        System.out.println("Esot");
+        System.out.println(usuarioDTO.getCorreo());
+        if (!usuario.autenticar(usuarioDTO)) {
+            System.out.println(usuarioDTO);
+            return "redirect:/autenticar?error";
+
+        }
+        Usuario usua= usuario.buscarPorCorreo(usuarioDTO.getCorreo());
+        if(usua!=null){
+            return "redirect:/autenticarOK/"+usua.getId();
+        }
+        return "redirect:/autenticarOK";
+            
+            
+    }
+    */
     
 }
